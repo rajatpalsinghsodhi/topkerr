@@ -29,12 +29,35 @@ linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))`,
 
 function initials(label: string) {
   const parts = label
-    .replace(/[“”"]/g, "")
+    .replace(/["""]/g, "")
     .split(/\s+/)
     .filter(Boolean);
   const a = parts[0]?.[0] ?? "T";
   const b = parts[1]?.[0] ?? "";
   return (a + b).toUpperCase();
+}
+
+function Stars({ count = 5 }: { count?: number }) {
+  return (
+    <div className="flex items-center gap-0.5" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg
+          key={i}
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          aria-hidden
+          fill={i < count ? "var(--accent)" : "none"}
+          stroke={i < count ? "var(--accent)" : "rgba(245,243,238,0.22)"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </div>
+  );
 }
 
 export function TestimonialCard({
@@ -46,37 +69,37 @@ export function TestimonialCard({
 }) {
   return (
     <div className={cn("rounded-3xl border border-white/12 bg-white/4 p-6", className)}>
-      <div className="flex items-start gap-4">
+      <Stars />
+
+      <p className="mt-4 text-sm leading-7 text-white/72">
+        &ldquo;{t.quote}&rdquo;
+      </p>
+
+      <div className="mt-5 flex items-center gap-3">
         <div
           aria-hidden
-          className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl"
+          className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl"
           style={avatarStyle(t.name)}
         >
           <div className="absolute inset-0 grid place-items-center">
-            <span className="text-xs font-medium tracking-[0.18em] text-white/80">
+            <span className="text-[11px] font-medium tracking-[0.14em] text-white/80">
               {initials(t.name)}
             </span>
           </div>
         </div>
 
-        <div className="min-w-0">
-          <p className="text-sm leading-6 text-white/70">“{t.quote}”</p>
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-xs uppercase tracking-[0.22em] text-white/55">
-              {t.name}
-            </p>
-            <a
-              className="text-xs text-white/60 hover:text-white transition-colors"
-              href={t.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.sourceLabel} →
-            </a>
-          </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-medium text-white/85">{t.name}</p>
+          <a
+            className="mt-0.5 text-[11px] text-white/45 hover:text-white/70 transition-colors"
+            href={t.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.sourceLabel} →
+          </a>
         </div>
       </div>
     </div>
   );
 }
-
