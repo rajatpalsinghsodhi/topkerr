@@ -51,16 +51,16 @@ export default function LocationsPage() {
                 <Button variant="ghost" href={`/locations/${l.slug}`}>
                   Details
                 </Button>
-                <a
-                  className="text-xs text-white/60 hover:text-white transition-colors"
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    l.googleMapsQuery,
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Button
+                  variant="ghost"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.googleMapsQuery)}`}
                 >
-                  Open in Maps
-                </a>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  Get directions
+                </Button>
               </div>
             </div>
           ))}

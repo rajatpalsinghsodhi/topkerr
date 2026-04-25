@@ -48,16 +48,16 @@ export default function LocationDetailPage({
                   Contact
                 </Button>
               )}
-              <a
-                className="text-sm text-white/70 hover:text-white transition-colors"
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  loc.googleMapsQuery,
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                variant="ghost"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.googleMapsQuery)}`}
               >
-                Open in Google Maps →
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Get directions
+              </Button>
             </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
