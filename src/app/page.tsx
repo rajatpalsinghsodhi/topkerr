@@ -9,18 +9,19 @@ export default function Home() {
   return (
     <main className="grain topo">
       <section className="relative overflow-hidden">
-        {/* Shop photo — blended into dark background */}
+        {/* Shop photo hero background */}
         <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/shop-hero.jpg"
             alt=""
-            className="h-full w-full object-cover object-center"
-            style={{ opacity: 0.32 }}
+            className="h-full w-full object-cover object-[60%_center]"
+            style={{ opacity: 0.65 }}
           />
-          {/* gradient vignette so text stays readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07070a] via-[#07070a]/75 to-[#07070a]/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07070a] via-transparent to-[#07070a]/55" />
+          {/* Strong dark cover on left so text pops, fades to transparent on right letting photo show */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07070a] from-[30%] via-[#07070a]/80 via-[55%] to-transparent" />
+          {/* Subtle top + bottom fade to blend into page */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/60 via-transparent to-[#07070a]" />
         </div>
         <Container className="relative z-10 py-16 md:py-24">
           <div className="grid items-end gap-10 md:grid-cols-12">
