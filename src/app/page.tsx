@@ -15,13 +15,14 @@ export default function Home() {
           <img
             src="/shop-hero.jpg"
             alt=""
-            className="h-full w-full object-cover object-[60%_center]"
-            style={{ opacity: 0.65 }}
+            className="h-full w-full object-cover object-center"
+            style={{ opacity: 0.72 }}
           />
-          {/* Strong dark cover on left so text pops, fades to transparent on right letting photo show */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07070a] from-[30%] via-[#07070a]/80 via-[55%] to-transparent" />
-          {/* Subtle top + bottom fade to blend into page */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/60 via-transparent to-[#07070a]" />
+          {/* Mobile: darken top (header area) + bottom (fade to page), leave middle fully visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/85 via-transparent to-[#07070a] md:hidden" />
+          {/* Desktop: dark on left for text, fade to transparent right so photo shows */}
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#07070a] from-[30%] via-[#07070a]/80 via-[55%] to-transparent" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#07070a]/55 via-transparent to-[#07070a]" />
         </div>
         <Container className="relative z-10 py-16 md:py-24">
           <div className="grid items-end gap-10 md:grid-cols-12">
