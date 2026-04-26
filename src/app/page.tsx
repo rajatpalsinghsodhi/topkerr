@@ -9,8 +9,24 @@ export default function Home() {
   return (
     <main className="grain topo">
       <section className="relative overflow-hidden">
-        {/* Shop photo hero background */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+
+        {/* ── Mobile: full-width image stacked above content ── */}
+        <div aria-hidden className="relative w-full md:hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/shop-hero.jpg"
+            alt=""
+            className="w-full"
+            style={{ display: "block" }}
+          />
+          {/* Dark tint over image so text above stays readable */}
+          <div className="absolute inset-0 bg-[#07070a]/55" />
+          {/* Bottom fade blends into the dark content below */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#07070a] to-transparent" />
+        </div>
+
+        {/* ── Desktop: image as absolute background ── */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0 hidden md:block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/shop-hero.jpg"
@@ -18,13 +34,11 @@ export default function Home() {
             className="h-full w-full object-cover object-center"
             style={{ opacity: 0.72 }}
           />
-          {/* Mobile: darken top (header area) + bottom (fade to page), leave middle fully visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/85 via-transparent to-[#07070a] md:hidden" />
-          {/* Desktop: dark on left for text, fade to transparent right so photo shows */}
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#07070a] from-[30%] via-[#07070a]/80 via-[55%] to-transparent" />
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-[#07070a]/55 via-transparent to-[#07070a]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07070a] from-[30%] via-[#07070a]/80 via-[55%] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/55 via-transparent to-[#07070a]" />
         </div>
-        <Container className="relative z-10 py-16 md:py-24">
+
+        <Container className="relative z-10 py-10 md:py-24">
           <div className="grid items-end gap-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <p className="revealUp inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/70">
