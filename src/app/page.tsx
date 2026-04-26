@@ -9,7 +9,20 @@ export default function Home() {
   return (
     <main className="grain topo">
       <section className="relative overflow-hidden">
-        <Container className="relative py-16 md:py-24">
+        {/* Shop photo — blended into dark background */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/shop-hero.jpg"
+            alt=""
+            className="h-full w-full object-cover object-center"
+            style={{ opacity: 0.32 }}
+          />
+          {/* gradient vignette so text stays readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07070a] via-[#07070a]/75 to-[#07070a]/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07070a] via-transparent to-[#07070a]/55" />
+        </div>
+        <Container className="relative z-10 py-16 md:py-24">
           <div className="grid items-end gap-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <p className="revealUp inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/70">
